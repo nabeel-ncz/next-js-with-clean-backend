@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { IUserInteractor } from "../../interfaces/user/IUserInteractor";
 import { inject, injectable } from "inversify";
-import { INTERFACE_TYPE } from "../../utils";
+import { INTERFACE_TYPE_USER } from "../../utils";
 import { generateToken } from "../../utils/jwt/generateToken";
 import { userRegisterValidator } from "../../utils/validators/userValidators";
 import bcrypt from "bcrypt";
@@ -12,7 +12,7 @@ class UserController {
     private interactor: IUserInteractor;
 
     constructor(
-        @inject(INTERFACE_TYPE.UserInteractor) interactor: IUserInteractor
+        @inject(INTERFACE_TYPE_USER.UserInteractor) interactor: IUserInteractor
     ) {
         this.interactor = interactor;
     }

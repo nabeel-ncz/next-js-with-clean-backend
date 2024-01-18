@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { Container } from "inversify";
-import { INTERFACE_TYPE } from "../../utils";
+import { INTERFACE_TYPE_USER } from "../../utils";
 import { IUserRepository } from "../../interfaces/user/IUserRepository";
 import { IUserInteractor } from "../../interfaces/user/IUserInteractor";
 import { UserInteractor } from "../../interactors/userInteractor";
@@ -10,11 +10,11 @@ const router: Router = Router();
 
 const container = new Container();
 
-container.bind<IUserRepository>(INTERFACE_TYPE.UserRepository).to(UserRepository);
-container.bind<IUserInteractor>(INTERFACE_TYPE.UserInteractor).to(UserInteractor);
-container.bind(INTERFACE_TYPE.UserController).to(UserController);
+container.bind<IUserRepository>(INTERFACE_TYPE_USER.UserRepository).to(UserRepository);
+container.bind<IUserInteractor>(INTERFACE_TYPE_USER.UserInteractor).to(UserInteractor);
+container.bind(INTERFACE_TYPE_USER.UserController).to(UserController);
 
-const controller = container.get<UserController>(INTERFACE_TYPE.UserController);
+const controller = container.get<UserController>(INTERFACE_TYPE_USER.UserController);
 
 router.route('/register')
     .post(controller.onRegisterUser.bind(controller));

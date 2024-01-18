@@ -2,7 +2,7 @@ import { injectable, inject } from "inversify";
 import { UserEntity } from "../entities/userEntity";
 import { IUserInteractor } from "../interfaces/user/IUserInteractor";
 import { IUserRepository } from "../interfaces/user/IUserRepository";
-import { INTERFACE_TYPE } from "../utils";
+import { INTERFACE_TYPE_USER } from "../utils";
 import { ObjectId } from "mongoose";
 
 @injectable()
@@ -11,7 +11,7 @@ export class UserInteractor implements IUserInteractor {
     private repository: IUserRepository;
 
     constructor(
-        @inject(INTERFACE_TYPE.UserRepository) repository: IUserRepository
+        @inject(INTERFACE_TYPE_USER.UserRepository) repository: IUserRepository
     ) {
         this.repository = repository;
     }
