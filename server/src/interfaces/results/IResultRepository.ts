@@ -1,9 +1,9 @@
 import { ResultsEntity } from "../../entities/resultsEntity";
 
 export interface IResultRepository {
-    create(data: ResultsEntity): Promise<string>;
+    create(data: ResultsEntity): Promise<void>;
 
     findById(id: string): Promise<ResultsEntity | null>;
 
-    findMany(): Promise<ResultsEntity[]>;
+    findByUserId(id: string): Promise<any[]>;
 }

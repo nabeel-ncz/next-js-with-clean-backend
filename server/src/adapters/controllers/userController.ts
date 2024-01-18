@@ -44,13 +44,7 @@ class UserController {
                     message: "User created successfully!"
                 })
         } catch (error: any) {
-            res
-                .status(400)
-                .json({
-                    success: false,
-                    error: error?.message,
-                    message: "User creation failed!"
-                });
+            next(error);
         }
     }
 
@@ -74,13 +68,7 @@ class UserController {
                     message: "User logged-in successfully!"
                 })
         } catch (error: any) {
-            res
-                .status(400)
-                .json({
-                    success: false,
-                    error: error?.message,
-                    message: "User login failed!"
-                });
+            next(error);
         }
     }
 
@@ -101,13 +89,7 @@ class UserController {
                     message: "User details retrieved"
                 })
         } catch (error: any) {
-            res
-                .status(400)
-                .json({
-                    success: false,
-                    error: error?.message,
-                    message: "Get user failed!"
-                });
+            next(error)
         }
     }
 }

@@ -3,7 +3,7 @@ import { injectable } from "inversify";
 import { UserEntity } from "../../entities/userEntity";
 import { IUserRepository } from "../../interfaces/user/IUserRepository";
 import bcrypt from "bcrypt";
-import { ObjectId } from "mongoose";
+
 
 @injectable()
 export class UserRepository implements IUserRepository {

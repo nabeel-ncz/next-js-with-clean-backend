@@ -4,9 +4,11 @@ export interface IQuizInteractor {
         title: string;
         description: string;
         questions?: any[];
-    }): Promise<string>;
+    }): Promise<void>;
 
     updateQuiz(id: string, updates: any): Promise<void>;
 
     getQuiz(id: string): Promise<any>;
+
+    getQuizzes(): Promise<any[]>;
 }

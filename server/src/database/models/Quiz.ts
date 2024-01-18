@@ -5,7 +5,8 @@ interface IQuizSchema {
     instructor_id: Types.ObjectId;
     title: string;
     description: string;
-    created_at: Date;
+    createdAt: Date;
+    question_score: number,
     questions: IQuestionSchema[];
 }
 
@@ -34,7 +35,8 @@ const QuizSchema = new Schema<IQuizSchema>({
     instructor_id: { type: Schema.Types.ObjectId, ref: 'users', required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
-    questions: [QuestionSchema],
+    question_score: { type: Number, required: true },
+    questions: [QuestionSchema]
 }, { timestamps: true });
 
 

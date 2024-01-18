@@ -10,6 +10,8 @@ interface IResultsSchema {
     user_id: Types.ObjectId;
     quiz_id: Types.ObjectId;
     responses: IResultsItemSchema[];
+    score: number;
+    totalScore: number;
     submitted_at: Date;
 }
 
@@ -22,6 +24,8 @@ const ResultsItemSchema = new Schema<IResultsItemSchema>({
 const ResultsSchema = new Schema<IResultsSchema>({
     user_id: { type: Schema.Types.ObjectId, ref: 'users', required: true },
     quiz_id: { type: Schema.Types.ObjectId, ref: 'quizzes', required: true },
+    score: { type: Number, required: true },
+    totalScore: { type: Number, required: true },
     responses: [ResultsItemSchema],
     submitted_at: { type: Date, default: Date.now },
 });

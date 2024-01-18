@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import UserRouter from "./adapters/routes/userRoute";
+import QuizRouter from "./adapters/routes/quizRoute";
 import { errorHandler, notFoundHandler } from "./adapters/middlewares/errorHandler";
 
 class App {
@@ -18,8 +19,9 @@ class App {
 
     protected routes(): void {
         this.app.use('/api/user', UserRouter);
+        this.app.use('/api/quiz', QuizRouter);
         this.app.all("*", notFoundHandler);
-        // this.app.use(errorHandler);
+        this.app.use(errorHandler);
     }
 }
 

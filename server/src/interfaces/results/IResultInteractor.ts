@@ -3,7 +3,8 @@ export interface IResultInteractor {
         user_id: string;
         quiz_id: string;
         responses: any[];
-    }): Promise<string>;
+        question_score: number,
+    }): Promise<void>;
 
     getUserResult(id: string): Promise<any>;
 }
