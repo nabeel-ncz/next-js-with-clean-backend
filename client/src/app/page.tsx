@@ -1,9 +1,13 @@
-import Image from 'next/image'
+"use client"
+import RequireAuth from "@/components/user/RequireAuth"
 
-export default function Home() {
+function Home() {
   return (
     <div>
-
+      hello
     </div>
   )
 }
+
+
+export default RequireAuth(Home);

@@ -21,7 +21,7 @@ class UserController {
         try {
             const validation = userRegisterValidator(req.body);
             if (!validation.success) {
-                throw new Error(validation.error?.errors[0]?.message || validation.error?.message || "Validation failed!");
+                throw new Error("Validation failed!");
             }
             const { name, email, password } = req.body;
             const salt = await bcrypt.genSalt(10);
@@ -91,6 +91,14 @@ class UserController {
         } catch (error: any) {
             next(error)
         }
+    }
+
+    async onGetAuthoriazation(req: Request, res: Response, next: NextFunction){
+        res.status(200).json({
+            success: true,
+            data: {},
+            message: "Authorized"
+        })
     }
 }
 

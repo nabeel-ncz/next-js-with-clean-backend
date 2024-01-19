@@ -4,18 +4,19 @@ import { useState } from "react";
 
 export default function SignupForm() {
 
-
     const [formData, setFormData] = useState({ name: "", email: "", password: "" });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const handleFormSubmition = () => {
+    const handleFormSubmition = (event:any) => {
+        event.preventDefault();
         setLoading(true);
-        axios.post('https://localhost:4000/api/user/register', formData, { withCredentials: true })
-            .then(() => {
-                
+        axios.post('http://localhost:4000/api/user/register', formData, { withCredentials: true })
+            .then((response) => {
+                console.log(response)
             })
             .catch((error) => {
+                console.log(error)
                 setError(error?.message);
             })
             .finally(() => {

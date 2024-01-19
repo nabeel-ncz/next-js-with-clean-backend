@@ -1,4 +1,6 @@
 import express, { Application } from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 import UserRouter from "./adapters/routes/userRoute";
 import QuizRouter from "./adapters/routes/quizRoute";
 import { errorHandler, notFoundHandler } from "./adapters/middlewares/errorHandler";
@@ -13,6 +15,12 @@ class App {
     }
 
     protected plugins(): void {
+        this.app.use(cors({
+            origin: "http://localhost:3000",
+            methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
+            credentials: true
+        }));
+        this.app.use(cookieParser());
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
     }

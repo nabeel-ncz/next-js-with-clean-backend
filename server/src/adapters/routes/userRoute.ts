@@ -6,6 +6,7 @@ import { IUserInteractor } from "../../interfaces/user/IUserInteractor";
 import { UserInteractor } from "../../interactors/userInteractor";
 import { UserRepository } from "../../database/repositories/userRepository";
 import UserController from "../controllers/userController";
+import isAuthorized from "../middlewares/authorizationMiddleware";
 const router: Router = Router();
 
 const container = new Container();
@@ -15,6 +16,9 @@ container.bind<IUserInteractor>(INTERFACE_TYPE_USER.UserInteractor).to(UserInter
 container.bind(INTERFACE_TYPE_USER.UserController).to(UserController);
 
 const controller = container.get<UserController>(INTERFACE_TYPE_USER.UserController);
+
+router.route('/isAuthorized')
+    .get(isAuthorized, controller.onGetAuthoriazation.bind(controller));
 
 router.route('/register')
     .post(controller.onRegisterUser.bind(controller));
